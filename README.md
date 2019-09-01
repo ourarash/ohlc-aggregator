@@ -1,5 +1,12 @@
 # ohlc-aggregator
 
+[![NPM](https://badge.fury.io/js/ohlc-aggregator.svg)](https://www.npmjs.com/package/ohlc-aggregator)
+<!-- [![NPM Downloads][downloadst-image]][downloads-url] -->
+
+[downloads-image]: https://img.shields.io/npm/dm/ohlc-aggregator.svg
+[downloadst-image]: https://img.shields.io/npm/dt/ohlc-aggregator.svg
+[downloads-url]: https://npmjs.org/package/ohlc-aggregator
+
 Aggregates ohlcv candle values into coarse-grained intervals. The intervals should be either minutes or days.
 
 The difference between this package and other packages is that rather than simply grouping each `n` candles into a group, if some candles from a group are missing, it still creates thouse groups.
@@ -18,6 +25,13 @@ However, we need two groups:
 - Group 2: `9:00 to 9:05`
 
 This implementation still creates two groups although some candles are missing from each group.
+
+## Install
+
+```bash
+npm i -S ohlc-aggregator
+```
+
 
 # Usage
 
