@@ -29,13 +29,14 @@ This implementation still creates two groups although some candles are missing f
 ## Install
 
 ```bash
-npm i -S ohlc-aggregator
+npm i -s ohlc-aggregator
 ```
 
 
 # Usage
 
 ```javascript
+// Converting 1m to 5m candles
 let ohlc_aggregate = require("ohlc-aggregator");
 var moment = require("moment");
 
@@ -67,8 +68,8 @@ let result = ohlc_aggregate(
       volume: 200
     }
   ],
-  /*intervalRatio=*/ 5,
-  /*intervalInSeconds=*/ 5 * 60
+  /*intervalRatio=*/ 5,   // ration between original interval and the desired interval
+  /*intervalInSeconds=*/ 5 * 60 // Interval duration in seconds
 );
 
 console.log("result: ", JSON.stringify(result, null, 1));
