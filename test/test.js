@@ -28,7 +28,7 @@ function basicTests() {
         }
       ],
       /*intervalRatio=*/ 5,
-      /*durationInSeconds=*/ 5 * 60
+      /*intervalInSeconds=*/ 5 * 60
     );
     expect(result).to.deep.equal([
       {
@@ -44,7 +44,7 @@ function basicTests() {
 }
 
 function lengthTwoTests() {
-  it("should return an array of length 1 if input is of length 2 and one is divisable by durationInSeconds", function() {
+  it("should return an array of length 1 if input is of length 2 and one is divisable by intervalInSeconds", function() {
     var result = ohlc_aggregate(
       [
         {
@@ -65,7 +65,7 @@ function lengthTwoTests() {
         }
       ],
       /*intervalRatio=*/ 5,
-      /*durationInSeconds=*/ 5 * 60
+      /*intervalInSeconds=*/ 5 * 60
     );
     expect(result).to.deep.equal([
       {
@@ -81,7 +81,7 @@ function lengthTwoTests() {
 }
 
 function lengthThreeTests() {
-  it("should return an array of length 2 if input is of length 3 and middle one is divisable by durationInSeconds", function() {
+  it("should return an array of length 2 if input is of length 3 and middle one is divisable by intervalInSeconds", function() {
     var result = ohlc_aggregate(
       [
         {
@@ -110,7 +110,7 @@ function lengthThreeTests() {
         }
       ],
       /*intervalRatio=*/ 5,
-      /*durationInSeconds=*/ 5 * 60
+      /*intervalInSeconds=*/ 5 * 60
     );
     expect(result).to.deep.equal([
       {
@@ -132,7 +132,7 @@ function lengthThreeTests() {
     ]);
   });
 
-  it("should return an array of length 1 if input is of length 3 and last one is divisable by durationInSeconds", function() {
+  it("should return an array of length 1 if input is of length 3 and last one is divisable by intervalInSeconds", function() {
     var result = ohlc_aggregate(
       [
         {
@@ -161,7 +161,7 @@ function lengthThreeTests() {
         }
       ],
       /*intervalRatio=*/ 5,
-      /*durationInSeconds=*/ 5 * 60
+      /*intervalInSeconds=*/ 5 * 60
     );
     expect(result).to.deep.equal([
       {
@@ -183,7 +183,7 @@ function lengthThreeTests() {
     ]);
   });
 
-  it("should return an array of length 1 if input is of length 3 and first one is divisable by durationInSeconds", function() {
+  it("should return an array of length 1 if input is of length 3 and first one is divisable by intervalInSeconds", function() {
     var result = ohlc_aggregate(
       [
         {
@@ -212,7 +212,7 @@ function lengthThreeTests() {
         }
       ],
       /*intervalRatio=*/ 5,
-      /*durationInSeconds=*/ 5 * 60
+      /*intervalInSeconds=*/ 5 * 60
     );
     expect(result).to.deep.equal([
       {
@@ -226,7 +226,7 @@ function lengthThreeTests() {
     ]);
   });
 
-  it("should return an array of length 1 if input is of length 3 and none is divisable by durationInSeconds", function() {
+  it("should return an array of length 1 if input is of length 3 and none is divisable by intervalInSeconds", function() {
     var result = ohlc_aggregate(
       [
         {
@@ -255,7 +255,7 @@ function lengthThreeTests() {
         }
       ],
       /*intervalRatio=*/ 5,
-      /*durationInSeconds=*/ 5 * 60
+      /*intervalInSeconds=*/ 5 * 60
     );
     expect(result).to.deep.equal([
       {
@@ -271,7 +271,7 @@ function lengthThreeTests() {
 }
 
 function lengthTenTests() {
-  it("should return an array of length 2 if input is of length 10 and first one is divisable by durationInSeconds", function() {
+  it("should return an array of length 2 if input is of length 10 and first one is divisable by intervalInSeconds", function() {
     let data = [
       {
         time: moment("10/15/2017 9:00", "M/D/YYYY H:mm").valueOf(),
@@ -298,7 +298,7 @@ function lengthTenTests() {
     var result = ohlc_aggregate(
       data,
       /*intervalRatio=*/ 5,
-      /*durationInSeconds=*/ 5 * 60
+      /*intervalInSeconds=*/ 5 * 60
     );
 
     expect(result).to.deep.equal([
@@ -357,7 +357,7 @@ function lengthTenTests() {
     var result = ohlc_aggregate(
       data,
       /*intervalRatio=*/ 5,
-      /*durationInSeconds=*/ 5 * 60
+      /*intervalInSeconds=*/ 5 * 60
     );
 
     expect(result).to.deep.equal([
@@ -417,7 +417,7 @@ function lengthTenTests() {
     var result = ohlc_aggregate(
       data,
       /*intervalRatio=*/ 5,
-      /*durationInSeconds=*/ 5 * 60
+      /*intervalInSeconds=*/ 5 * 60
     );
 
     expect(result).to.deep.equal([
@@ -450,6 +450,8 @@ function lengthTenTests() {
   });
 }
 
+//-----------------------------------------------------------------------------
+
 describe("#OHLC-Aggregate-1m-to-5m", function() {
   basicTests();
   lengthTwoTests();
@@ -459,7 +461,7 @@ describe("#OHLC-Aggregate-1m-to-5m", function() {
 });
 
 describe("#OHLC-Aggregate-1m-to-10m", function() {
-  it("should return an array of length 2 if input is of length 10 and first one is divisable by durationInSeconds", function() {
+  it("should return an array of length 2 if input is of length 10 and first one is divisable by intervalInSeconds", function() {
     let intervalRatio = 10;
     let data = [
       {
@@ -487,7 +489,7 @@ describe("#OHLC-Aggregate-1m-to-10m", function() {
     var result = ohlc_aggregate(
       data,
       /*intervalRatio=*/ intervalRatio,
-      /*durationInSeconds=*/ intervalRatio * 60
+      /*intervalInSeconds=*/ intervalRatio * 60
     );
 
     expect(result).to.deep.equal([
@@ -524,7 +526,7 @@ describe("#OHLC-Aggregate-1m-to-10m", function() {
 });
 
 describe("#OHLC-Aggregate-1h-to-4h", function() {
-  it("should return an array of length 2 if input is of length 8 and first one is divisable by durationInSeconds", function() {
+  it("should return an array of length 2 if input is of length 8 and first one is divisable by intervalInSeconds", function() {
     let intervalRatio = 4;
     let data = [
       {
@@ -552,7 +554,7 @@ describe("#OHLC-Aggregate-1h-to-4h", function() {
     var result = ohlc_aggregate(
       data,
       /*intervalRatio=*/ intervalRatio,
-      /*durationInSeconds=*/ intervalRatio * 60 * 60
+      /*intervalInSeconds=*/ intervalRatio * 60 * 60
     );
 
     expect(result).to.deep.equal([
@@ -585,5 +587,207 @@ describe("#OHLC-Aggregate-1h-to-4h", function() {
         time: data[intervalRatio].time
       }
     ]);
+  });
+});
+
+// describe("#OHLC-Aggregate-1m-to-5m-cc", function() {
+//   console.log("Salam");
+//   it("should return an array of length 2 if input is of length 8 and first one is divisable by intervalInSeconds", async function() {
+//     // let data = await cc.histoMinute("BTC", "USD", { limit: 10 });
+//     // let dataAgg = await cc.histoMinute("BTC", "USD", { limit: 2, aggregate: "5" });
+//     let data1;
+//     let data1Agg;
+//     let data = [];
+//     let dataAgg = [];
+//     let exchange;
+//     try {
+//       exchange = new ccxt["bitfinex"]();
+//     } catch (error) {
+//       console.log("Error: ", error);
+//     }
+//     const min = 60 * 1000;
+//     let since = exchange.milliseconds() - 20 * min;
+//     let sinceAgg = exchange.milliseconds() - 20 * min;
+
+//     try {
+//       data1 = await exchange.fetchOHLCV(`BTC/USD`, "1m", since, 10);
+//     } catch (error) {
+//       console.log("Error: ", error);
+//     }
+
+//     try {
+//       data1Agg = await exchange.fetchOHLCV(`BTC/USD`, "5m", sinceAgg, 2);
+//     } catch (error) {
+//       console.log("Error: ", error);
+//     }
+
+//     for (const d of data1) {
+//       data.push({
+//         time: d[0],
+//         open: d[1],
+//         high: d[2],
+//         low: d[3],
+//         close: d[4],
+//         volume: d[5]
+//       });
+//     }
+
+//     for (const d of data1Agg) {
+//       dataAgg.push({
+//         time: d[0],
+//         open: d[1],
+//         high: d[2],
+//         low: d[3],
+//         close: d[4],
+//         volume: d[5]
+//       });
+//     }
+
+//     // for (const d of dataAgg) {
+//     //   d["volume"]= d.volumeto;
+//     //   d["time"]= d.time * 1000;
+//     // }
+
+//     let intervalRatio = 5;
+
+//     console.log("data: ", JSON.stringify(data, null, 2));
+//     console.log("dataAgg: ", JSON.stringify(dataAgg, null, 2));
+//     var result = ohlc_aggregate(
+//       data,
+//       /*intervalRatio=*/ intervalRatio,
+//       /*intervalInSeconds=*/ intervalRatio * 60
+//     );
+
+//     expect(result).to.deep.equal(dataAgg);
+//   });
+// });
+
+describe("#OHLC-Aggregate-1m-to-5m-ccxt-sample", function() {
+  it("should return an array of length 3 for this sample", function() {
+    let data = [
+      {
+        time: 1567361880000,
+        open: 9626.981274,
+        high: 9626.981274,
+        low: 9626.9,
+        close: 9626.9,
+        volume: 0.94270682
+      },
+      {
+        time: 1567361940000,
+        open: 9626.9,
+        high: 9626.90964075,
+        low: 9626.9,
+        close: 9626.90964075,
+        volume: 0.45494175
+      },
+      {
+        time: 1567362000000,
+        open: 9626.9,
+        high: 9626.90963142,
+        low: 9616.1,
+        close: 9616.3,
+        volume: 1.01075833
+      },
+      {
+        time: 1567362060000,
+        open: 9624.9,
+        high: 9626.7,
+        low: 9624.9,
+        close: 9626.040496,
+        volume: 0.9088545299999999
+      },
+      {
+        time: 1567362120000,
+        open: 9626,
+        high: 9626,
+        low: 9622.1,
+        close: 9622.1,
+        volume: 0.195106
+      },
+      {
+        time: 1567362180000,
+        open: 9622.6,
+        high: 9624.1,
+        low: 9622,
+        close: 9624.1,
+        volume: 0.21193979999999998
+      },
+      {
+        time: 1567362240000,
+        open: 9623.2,
+        high: 9624.81764813,
+        low: 9622.2,
+        close: 9622.2,
+        volume: 0.19835183
+      },
+      {
+        time: 1567362300000,
+        open: 9623.2,
+        high: 9624.81764813,
+        low: 9622.2,
+        close: 9622.2,
+        volume: 0.19835183
+      },
+      {
+        time: 1567362360000,
+        open: 9623.2,
+        high: 9625.9,
+        low: 9623.2,
+        close: 9625.9,
+        volume: 0.01
+      },
+      {
+        time: 1567362420000,
+        open: 9622.1,
+        high: 9628.8,
+        low: 9622.1,
+        close: 9628.8,
+        volume: 3.65199
+      },
+      {
+        time: 1567362480000,
+        open: 9628.8,
+        high: 9628.8,
+        low: 9628.7,
+        close: 9628.75605418,
+        volume: 0.0211
+      }
+    ];
+
+    let expectedData = [
+      {
+        close: 9626.90964075,
+        high: 9626.981274,
+        low: 9626.9,
+        open: 9626.981274,
+        time: 1567361880000,
+        volume: 1.3976485699999999
+      },
+      {
+        time: 1567362000000,
+        open: 9626.9,
+        high: 9626.90963142,
+        low: 9616.1,
+        close: 9622.2,
+        volume: 2.52501049
+      },
+      {
+        time: 1567362300000,
+        open: 9623.2,
+        high: 9628.8,
+        low: 9622.1,
+        close: 9628.75605418,
+        volume: 3.8814418300000004
+      }
+    ];
+    let intervalRatio = 5;
+    var result = ohlc_aggregate(
+      data,
+      /*intervalRatio=*/ intervalRatio,
+      /*intervalInSeconds=*/ intervalRatio * 60
+    );
+    // console.log("result: ", JSON.stringify(result, null, 2));
+    expect(result).to.deep.equal(expectedData);
   });
 });

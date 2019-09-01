@@ -1,12 +1,18 @@
 {
-  "name": "ohlcv-aggregator",
+  "name": "ohlc-aggregator",
   "version": "1.0.0",
   "description": "Aggregates ohlcv values into coarse grain intervals",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec"
   },
-  "keywords": [],
+  "keywords": [
+    "ohlc",
+    "ohlcv",
+    "aggregate",
+    "candle",
+    "trading"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
