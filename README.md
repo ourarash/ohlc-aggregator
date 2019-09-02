@@ -33,7 +33,6 @@ Another example: Consider these candles:
 3. `time: 9:01am`
 4. `time: 9:02am`
 5. `time: 9:03am`
-
 6. `time: 9:04am`
 7. `time: 9:05am`
 8. `time: 9:06am`
