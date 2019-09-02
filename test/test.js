@@ -791,3 +791,72 @@ describe("#OHLC-Aggregate-1m-to-5m-ccxt-sample", function() {
     expect(result).to.deep.equal(expectedData);
   });
 });
+
+
+describe("#OHLC-Aggregate-1m-to-2m-ccxt-sample", function() {
+  it("should convert 1m to 2m", function() {
+    let data = [
+      {
+        time: 1563625680000,
+        open: 0.00024824,
+        high: 0.00024851,
+        low: 0.00024798,
+        close: 0.00024831,
+        volume: 2264
+      },
+      {
+        time: 1563625740000,
+        open: 0.00024817,
+        high: 0.00024832,
+        low: 0.00024795,
+        close: 0.00024828,
+        volume: 3145
+      },
+      {
+        time: 1563625800000,
+        open: 0.00024824,
+        high: 0.00024831,
+        low: 0.00024789,
+        close: 0.00024825,
+        volume: 2956
+      },
+      {
+        time: 1563625860000,
+        open: 0.00024829,
+        high: 0.00024841,
+        low: 0.0002479,
+        close: 0.00024841,
+        volume: 3742
+      },
+      
+    ];
+
+    let expectedData = [
+      {
+        "open": 0.00024824,
+        "close": 0.00024828,
+        "low": 0.00024795,
+        "high": 0.00024851,
+        "volume": 5409,
+        "time": 1563625680000
+      },
+      {
+        "open": 0.00024824,
+        "close": 0.00024841,
+        "low": 0.00024789,
+        "high": 0.00024841,
+        "volume": 6698,
+        "time": 1563625800000
+      }
+    ];
+    let intervalRatio = 2;
+    var result = ohlc_aggregate(
+      data,
+      /*intervalRatio=*/ intervalRatio,
+      /*intervalInSeconds=*/ intervalRatio * 60
+    );
+    // console.log("result: ", JSON.stringify(result, null, 2));
+    expect(result).to.deep.equal(expectedData);
+  });
+});
+

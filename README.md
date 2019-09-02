@@ -7,11 +7,13 @@
 [downloadst-image]: https://img.shields.io/npm/dt/ohlc-aggregator.svg
 [downloads-url]: https://npmjs.org/package/ohlc-aggregator
 
-Aggregates ohlcv candle values into coarse-grained intervals. The intervals should be either minutes or days.
+Aggregates ohlcv candle values into predictable coarse-grained intervals. The intervals should be either minutes or days.
 
-The difference between this package and other packages is that rather than simply grouping each `n` candles into a group, if some candles from a group are missing, it still creates those groups. In other words, it creates predictable intervals.
+The difference between this package and other packages is that rather than simply grouping each `n` candles into a group, we create predictive interval where the start time of each interval is divisible by `n`. If some candles from an interval are missing, we still create those interval.
 
-For example, in converting `1m` to `5m` candles, a naive implementation creates only one group for these candles:
+## Example 1
+
+In converting `1m` to `5m` candles, a naive implementation creates only one group for the following 5 candles:
 
 1. `time: 8:59am`
 2. `time: 9:00am`
@@ -19,14 +21,16 @@ For example, in converting `1m` to `5m` candles, a naive implementation creates 
 4. `time: 9:02am`
 5. `time: 9:03am`
 
-However, this package creates two groups, based on predictable timing intervals, i.e., the start of each timing interval is divisible by 5m:
+However, this package creates two groups based on predictable timing intervals, i.e., the start of each timing interval is divisible by 5m:
 
 - Group 1: `8:55 to 8:59`
 - Group 2: `9:00 to 9:05`
 
 We still create two groups although some candles are missing from each group.
 
-Another example: Consider these candles:
+## Example 2
+
+Consider these candles:
 
 1. `time: 8:59am`
 2. `time: 9:00am`
@@ -39,14 +43,14 @@ Another example: Consider these candles:
 
 A naive implementation will create these groups:
 
-- Group 1: `8:59 to 9:03`, complete candle
-- Group 2: `9:04 to 9:06`, incomplete candle
+- Group 1: `8:59 to 9:03`, (complete candle)
+- Group 2: `9:04 to 9:06`, (incomplete candle)
 
 However, a predictable grouping would be:
 
-- Group 1: `8:55 to 9:00`, incomplete candle
-- Group 1: `9:00 to 9:04`, complete candle
-- Group 2: `9:05 to 9:09`, incomplete candle
+- Group 1: `8:55 to 9:00`, (incomplete candle)
+- Group 1: `9:00 to 9:04`, (complete candle)
+- Group 2: `9:05 to 9:09`, (incomplete candle)
 
 
 # Install
@@ -54,7 +58,6 @@ However, a predictable grouping would be:
 ```bash
 npm i -s ohlc-aggregator
 ```
-
 
 # Usage
 
