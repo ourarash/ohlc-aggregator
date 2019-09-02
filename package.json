@@ -1,10 +1,14 @@
 {
   "name": "ohlc-aggregator",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Aggregates ohlcv values into coarse grain intervals",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ourarash/ohlc-aggregator.git"
   },
   "keywords": [
     "ohlc",
