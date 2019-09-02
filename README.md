@@ -9,7 +9,7 @@
 
 Aggregates ohlcv candle values into coarse-grained intervals. The intervals should be either minutes or days.
 
-The difference between this package and other packages is that rather than simply grouping each `n` candles into a group, if some candles from a group are missing, it still creates thouse groups.
+The difference between this package and other packages is that rather than simply grouping each `n` candles into a group, if some candles from a group are missing, it still creates those groups.
 
 For example, in converting `1m` to `5m` candles, a naive implementation creates only one group for these candles:
 
