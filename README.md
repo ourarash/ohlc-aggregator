@@ -9,24 +9,48 @@
 
 Aggregates ohlcv candle values into coarse-grained intervals. The intervals should be either minutes or days.
 
-The difference between this package and other packages is that rather than simply grouping each `n` candles into a group, if some candles from a group are missing, it still creates those groups.
+The difference between this package and other packages is that rather than simply grouping each `n` candles into a group, if some candles from a group are missing, it still creates those groups. In other words, it creates predictable intervals.
 
 For example, in converting `1m` to `5m` candles, a naive implementation creates only one group for these candles:
 
-- `time: 8:59am`
-- `time: 9:00am`
-- `time: 9:01am`
-- `time: 9:02am`
-- `time: 9:03am`
+1. `time: 8:59am`
+2. `time: 9:00am`
+3. `time: 9:01am`
+4. `time: 9:02am`
+5. `time: 9:03am`
 
-However, we need two groups:
+However, this package creates two groups, based on predictable timing intervals, i.e., the start of each timing interval is divisible by 5m:
 
 - Group 1: `8:55 to 8:59`
 - Group 2: `9:00 to 9:05`
 
-This implementation still creates two groups although some candles are missing from each group.
+We still create two groups although some candles are missing from each group.
 
-## Install
+Another example: Consider these candles:
+
+1. `time: 8:59am`
+2. `time: 9:00am`
+3. `time: 9:01am`
+4. `time: 9:02am`
+5. `time: 9:03am`
+
+6. `time: 9:04am`
+7. `time: 9:05am`
+8. `time: 9:06am`
+
+A naive implementation will create these groups:
+
+- Group 1: `8:59 to 9:03`, complete candle
+- Group 2: `9:04 to 9:06`, incomplete candle
+
+However, a predictable grouping would be:
+
+- Group 1: `8:55 to 9:00`, incomplete candle
+- Group 1: `9:00 to 9:04`, complete candle
+- Group 2: `9:05 to 9:09`, incomplete candle
+
+
+# Install
 
 ```bash
 npm i -s ohlc-aggregator
