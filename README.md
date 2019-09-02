@@ -7,9 +7,9 @@
 [downloadst-image]: https://img.shields.io/npm/dt/ohlc-aggregator.svg
 [downloads-url]: https://npmjs.org/package/ohlc-aggregator
 
-Aggregates ohlcv candle values into predictable coarse-grained intervals. The intervals should be either minutes or days.
+Aggregates ohlcv candle values into predictable coarse-grained intervals. The intervals should be either `minutes`, `hours`, or `days`.
 
-The difference between this package and other packages is that rather than simply grouping each `n` candles into a group, we create predictive interval where the start time of each interval is divisible by `n`. If some candles from an interval are missing, we still create those interval.
+The difference between this package and other packages is that rather than simply aggregating each `n` candles into a group, we create predictable interval where the start time of each interval is divisible by `n`. If some candles from an interval are missing, we still create those interval.
 
 ## Example 1
 
@@ -26,7 +26,7 @@ However, this package creates two groups based on predictable timing intervals, 
 - Group 1: `8:55 to 8:59`
 - Group 2: `9:00 to 9:05`
 
-We still create two groups although some candles are missing from each group.
+We create two groups although some candles are missing from each group.
 
 ## Example 2
 
@@ -52,6 +52,7 @@ However, a predictable grouping would be:
 - Group 1: `9:00 to 9:04`, (complete candle)
 - Group 2: `9:05 to 9:09`, (incomplete candle)
 
+Again, the start of each timing interval is divisible by 5m.
 
 # Install
 
@@ -100,3 +101,5 @@ let result = ohlc_aggregate(
 
 console.log("result: ", JSON.stringify(result, null, 1));
 ```
+
+See [test/test.js](test/test.js) for more examples.
