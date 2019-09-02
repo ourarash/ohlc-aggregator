@@ -1,7 +1,7 @@
 # ohlc-aggregator
 
 [![NPM](https://badge.fury.io/js/ohlc-aggregator.svg)](https://www.npmjs.com/package/ohlc-aggregator)
-<!-- [![NPM Downloads][downloadst-image]][downloads-url] -->
+[![NPM Downloads][downloadst-image]][downloads-url]
 
 [downloads-image]: https://img.shields.io/npm/dm/ohlc-aggregator.svg
 [downloadst-image]: https://img.shields.io/npm/dt/ohlc-aggregator.svg
