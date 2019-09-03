@@ -96,7 +96,8 @@ let result = ohlc_aggregate(
     }
   ],
   /*intervalRatio=*/ 5,   // ration between original interval and the desired interval
-  /*intervalInSeconds=*/ 5 * 60 // Interval duration in seconds
+  /*intervalInSeconds=*/, 5 * 60 // Interval duration in seconds
+  /*arrayTimeCoefficient=*/ 1 // Set this to 1000 if the time values are in second
 );
 
 console.log("result: ", JSON.stringify(result, null, 1));
