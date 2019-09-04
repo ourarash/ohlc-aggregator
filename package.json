@@ -1,6 +1,6 @@
 {
   "name": "ohlc-aggregator",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Aggregates ohlcv values into coarse grain intervals",
   "main": "lib/index.js",
   "scripts": {
